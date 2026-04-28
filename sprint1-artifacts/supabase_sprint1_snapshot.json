@@ -1,0 +1,663 @@
+{
+  "generatedAt": "2026-04-28T08:13:30.495Z",
+  "project": {
+    "ref": "pzidyucjmlivbwlbyckh",
+    "name": "CIRQUA(via Readdy)",
+    "status": "ACTIVE_HEALTHY",
+    "region": "ap-northeast-1",
+    "databaseHost": "db.pzidyucjmlivbwlbyckh.supabase.co",
+    "databaseVersion": "17.6.1.084",
+    "postgresEngine": "17"
+  },
+  "databaseConfig": {
+    "postgresStatus": 200,
+    "poolerStatus": 200,
+    "pooler": {
+      "dbHost": "aws-1-ap-northeast-1.pooler.supabase.com",
+      "dbPort": 6543,
+      "dbName": "postgres",
+      "dbUser": "postgres.pzidyucjmlivbwlbyckh",
+      "poolMode": "transaction",
+      "connectionString": "postgresql://postgres.pzidyucjmlivbwlbyckh:***@aws-1-ap-northeast-1.pooler.supabase.com:6543/postgres"
+    }
+  },
+  "apiKeys": [
+    {
+      "id": "anon",
+      "type": "legacy",
+      "name": "anon",
+      "prefix": "KFA7X",
+      "description": "Legacy anon API key"
+    },
+    {
+      "id": "service_role",
+      "type": "legacy",
+      "name": "service_role",
+      "prefix": "a7jdr",
+      "description": "Legacy service_role API key"
+    },
+    {
+      "id": "47dc68a7-e39e-41c1-93f0-0b575a04212f",
+      "type": "publishable",
+      "name": "default",
+      "prefix": "sb_publishable_aviJD",
+      "description": null
+    },
+    {
+      "id": "c80079cc-7d21-417c-9214-7e76b65eac05",
+      "type": "secret",
+      "name": "default",
+      "prefix": "sb_secret_Sflc5",
+      "description": null
+    }
+  ],
+  "snapshot": {
+    "tables": [
+      {
+        "table_name": "activity_logs",
+        "rls_enabled": false,
+        "force_rls": false
+      },
+      {
+        "table_name": "alerts",
+        "rls_enabled": false,
+        "force_rls": false
+      },
+      {
+        "table_name": "expense_categories",
+        "rls_enabled": false,
+        "force_rls": false
+      },
+      {
+        "table_name": "expense_records",
+        "rls_enabled": false,
+        "force_rls": false
+      },
+      {
+        "table_name": "forms",
+        "rls_enabled": false,
+        "force_rls": false
+      },
+      {
+        "table_name": "income_categories",
+        "rls_enabled": false,
+        "force_rls": false
+      },
+      {
+        "table_name": "income_records",
+        "rls_enabled": false,
+        "force_rls": false
+      },
+      {
+        "table_name": "legal_documents",
+        "rls_enabled": false,
+        "force_rls": false
+      },
+      {
+        "table_name": "org_members",
+        "rls_enabled": false,
+        "force_rls": false
+      },
+      {
+        "table_name": "organizations",
+        "rls_enabled": false,
+        "force_rls": false
+      },
+      {
+        "table_name": "profiles",
+        "rls_enabled": false,
+        "force_rls": false
+      },
+      {
+        "table_name": "project_members",
+        "rls_enabled": false,
+        "force_rls": false
+      },
+      {
+        "table_name": "projects",
+        "rls_enabled": false,
+        "force_rls": false
+      },
+      {
+        "table_name": "receipts",
+        "rls_enabled": false,
+        "force_rls": false
+      }
+    ],
+    "policies": [],
+    "functions": [
+      {
+        "schema_name": "public",
+        "function_name": "can_add_member",
+        "owner": "postgres",
+        "security_definer": false,
+        "arguments": "org_uuid uuid",
+        "return_type": "boolean"
+      },
+      {
+        "schema_name": "public",
+        "function_name": "can_create_project",
+        "owner": "postgres",
+        "security_definer": false,
+        "arguments": "org_uuid uuid",
+        "return_type": "boolean"
+      },
+      {
+        "schema_name": "public",
+        "function_name": "get_org_usage",
+        "owner": "postgres",
+        "security_definer": false,
+        "arguments": "org_uuid uuid",
+        "return_type": "TABLE(current_projects integer, current_members integer, current_storage_mb numeric)"
+      },
+      {
+        "schema_name": "public",
+        "function_name": "handle_new_user",
+        "owner": "postgres",
+        "security_definer": true,
+        "arguments": "",
+        "return_type": "trigger"
+      }
+    ],
+    "triggers": [
+      {
+        "schema_name": "auth",
+        "table_name": "users",
+        "trigger_name": "on_auth_user_created",
+        "trigger_def": "CREATE TRIGGER on_auth_user_created AFTER INSERT ON auth.users FOR EACH ROW EXECUTE FUNCTION handle_new_user()"
+      },
+      {
+        "schema_name": "realtime",
+        "table_name": "subscription",
+        "trigger_name": "tr_check_filters",
+        "trigger_def": "CREATE TRIGGER tr_check_filters BEFORE INSERT OR UPDATE ON realtime.subscription FOR EACH ROW EXECUTE FUNCTION realtime.subscription_check_filters()"
+      },
+      {
+        "schema_name": "storage",
+        "table_name": "buckets",
+        "trigger_name": "enforce_bucket_name_length_trigger",
+        "trigger_def": "CREATE TRIGGER enforce_bucket_name_length_trigger BEFORE INSERT OR UPDATE OF name ON storage.buckets FOR EACH ROW EXECUTE FUNCTION storage.enforce_bucket_name_length()"
+      },
+      {
+        "schema_name": "storage",
+        "table_name": "buckets",
+        "trigger_name": "protect_buckets_delete",
+        "trigger_def": "CREATE TRIGGER protect_buckets_delete BEFORE DELETE ON storage.buckets FOR EACH STATEMENT EXECUTE FUNCTION storage.protect_delete()"
+      },
+      {
+        "schema_name": "storage",
+        "table_name": "objects",
+        "trigger_name": "protect_objects_delete",
+        "trigger_def": "CREATE TRIGGER protect_objects_delete BEFORE DELETE ON storage.objects FOR EACH STATEMENT EXECUTE FUNCTION storage.protect_delete()"
+      },
+      {
+        "schema_name": "storage",
+        "table_name": "objects",
+        "trigger_name": "update_objects_updated_at",
+        "trigger_def": "CREATE TRIGGER update_objects_updated_at BEFORE UPDATE ON storage.objects FOR EACH ROW EXECUTE FUNCTION storage.update_updated_at_column()"
+      }
+    ],
+    "grants": [
+      {
+        "table_name": "activity_logs",
+        "grantee": "anon",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "activity_logs",
+        "grantee": "authenticated",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "activity_logs",
+        "grantee": "postgres",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "activity_logs",
+        "grantee": "service_role",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "alerts",
+        "grantee": "anon",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "alerts",
+        "grantee": "authenticated",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "alerts",
+        "grantee": "postgres",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "alerts",
+        "grantee": "service_role",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "expense_categories",
+        "grantee": "anon",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "expense_categories",
+        "grantee": "authenticated",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "expense_categories",
+        "grantee": "postgres",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "expense_categories",
+        "grantee": "service_role",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "expense_records",
+        "grantee": "anon",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "expense_records",
+        "grantee": "authenticated",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "expense_records",
+        "grantee": "postgres",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "expense_records",
+        "grantee": "service_role",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "forms",
+        "grantee": "anon",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "forms",
+        "grantee": "authenticated",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "forms",
+        "grantee": "postgres",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "forms",
+        "grantee": "service_role",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "income_categories",
+        "grantee": "anon",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "income_categories",
+        "grantee": "authenticated",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "income_categories",
+        "grantee": "postgres",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "income_categories",
+        "grantee": "service_role",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "income_records",
+        "grantee": "anon",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "income_records",
+        "grantee": "authenticated",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "income_records",
+        "grantee": "postgres",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "income_records",
+        "grantee": "service_role",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "legal_documents",
+        "grantee": "anon",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "legal_documents",
+        "grantee": "authenticated",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "legal_documents",
+        "grantee": "postgres",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "legal_documents",
+        "grantee": "service_role",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "org_members",
+        "grantee": "anon",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "org_members",
+        "grantee": "authenticated",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "org_members",
+        "grantee": "postgres",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "org_members",
+        "grantee": "service_role",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "organizations",
+        "grantee": "anon",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "organizations",
+        "grantee": "authenticated",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "organizations",
+        "grantee": "postgres",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "organizations",
+        "grantee": "service_role",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "profiles",
+        "grantee": "anon",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "profiles",
+        "grantee": "authenticated",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "profiles",
+        "grantee": "postgres",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "profiles",
+        "grantee": "service_role",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "project_members",
+        "grantee": "anon",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "project_members",
+        "grantee": "authenticated",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "project_members",
+        "grantee": "postgres",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "project_members",
+        "grantee": "service_role",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "projects",
+        "grantee": "anon",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "projects",
+        "grantee": "authenticated",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "projects",
+        "grantee": "postgres",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "projects",
+        "grantee": "service_role",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "receipts",
+        "grantee": "anon",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "receipts",
+        "grantee": "authenticated",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "receipts",
+        "grantee": "postgres",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      },
+      {
+        "table_name": "receipts",
+        "grantee": "service_role",
+        "privileges": "DELETE, INSERT, REFERENCES, SELECT, TRIGGER, TRUNCATE, UPDATE"
+      }
+    ],
+    "routineGrants": [
+      {
+        "routine_name": "can_add_member",
+        "grantee": "PUBLIC",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "can_add_member",
+        "grantee": "anon",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "can_add_member",
+        "grantee": "authenticated",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "can_add_member",
+        "grantee": "postgres",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "can_add_member",
+        "grantee": "service_role",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "can_create_project",
+        "grantee": "PUBLIC",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "can_create_project",
+        "grantee": "anon",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "can_create_project",
+        "grantee": "authenticated",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "can_create_project",
+        "grantee": "postgres",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "can_create_project",
+        "grantee": "service_role",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "get_org_usage",
+        "grantee": "PUBLIC",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "get_org_usage",
+        "grantee": "anon",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "get_org_usage",
+        "grantee": "authenticated",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "get_org_usage",
+        "grantee": "postgres",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "get_org_usage",
+        "grantee": "service_role",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "handle_new_user",
+        "grantee": "PUBLIC",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "handle_new_user",
+        "grantee": "anon",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "handle_new_user",
+        "grantee": "authenticated",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "handle_new_user",
+        "grantee": "postgres",
+        "privileges": "EXECUTE"
+      },
+      {
+        "routine_name": "handle_new_user",
+        "grantee": "service_role",
+        "privileges": "EXECUTE"
+      }
+    ],
+    "metrics": [
+      {
+        "organization_count": "1",
+        "project_count": "3",
+        "projects_with_null_org_id": "3",
+        "profile_count": "3"
+      }
+    ],
+    "sampleOrg": [
+      {
+        "id": "53a14fc1-0c54-4cf2-bfc1-546fd12db86f"
+      }
+    ]
+  },
+  "smokeTests": [
+    {
+      "name": "public-root",
+      "endpoint": "/",
+      "status": 404,
+      "ok": false,
+      "bodyPreview": "{\"error\":\"requested path is invalid\"}"
+    },
+    {
+      "name": "protected-no-auth",
+      "endpoint": "/rest/v1/projects?select=id,org_id&limit=1",
+      "status": 401,
+      "ok": false,
+      "bodyPreview": "{\"message\":\"No API key found in request\",\"hint\":\"No `apikey` request header or url param was found.\"}"
+    },
+    {
+      "name": "protected-with-service-auth",
+      "endpoint": "/rest/v1/projects?select=id,org_id&limit=1",
+      "status": 200,
+      "ok": true,
+      "bodyPreview": "[{\"id\":\"proj-1\",\"org_id\":null}]"
+    },
+    {
+      "name": "missing-x-organization-id",
+      "endpoint": "/rest/v1/projects?select=id,org_id&limit=1",
+      "status": 200,
+      "ok": true,
+      "bodyPreview": "[{\"id\":\"proj-1\",\"org_id\":null}]"
+    },
+    {
+      "name": "invalid-x-organization-id",
+      "endpoint": "/rest/v1/projects?select=id,org_id&limit=1",
+      "status": 200,
+      "ok": true,
+      "bodyPreview": "[{\"id\":\"proj-1\",\"org_id\":null}]"
+    },
+    {
+      "name": "valid-x-organization-id",
+      "endpoint": "/rest/v1/projects?select=id,org_id&limit=1",
+      "status": 200,
+      "ok": true,
+      "bodyPreview": "[{\"id\":\"proj-1\",\"org_id\":null}]"
+    },
+    {
+      "name": "anon-project-read",
+      "endpoint": "/rest/v1/projects?select=id,org_id&limit=1",
+      "status": 200,
+      "ok": true,
+      "bodyPreview": "[{\"id\":\"proj-1\",\"org_id\":null}]"
+    },
+    {
+      "name": "anon-profile-read",
+      "endpoint": "/rest/v1/profiles?select=id,email&limit=1",
+      "status": 200,
+      "ok": true,
+      "bodyPreview": "[{\"id\":\"38cc6fdc-75c8-4a8d-8c29-5366724b736e\",\"email\":\"cirquatest@cirqua.com\"}]"
+    },
+    {
+      "name": "anon-rpc-get-org-usage",
+      "endpoint": "/rest/v1/rpc/get_org_usage",
+      "status": 200,
+      "ok": true,
+      "bodyPreview": "[{\"current_projects\":0,\"current_members\":2,\"current_storage_mb\":0}]"
+    }
+  ]
+}
