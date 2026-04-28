@@ -1,0 +1,10 @@
+{
+  "name": "cirqua",
+  "private": true,
+  "scripts": {
+    "inventory": "node scripts/db_inventory.js"
+  },
+  "dependencies": {
+    "pg": "^8.20.0"
+  }
+}

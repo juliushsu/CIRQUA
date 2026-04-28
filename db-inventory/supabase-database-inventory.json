@@ -1,0 +1,1196 @@
+{
+  "generatedAt": "2026-04-28T02:01:33.528Z",
+  "host": "pzidyucjmlivbwlbyckh.supabase.co",
+  "database": "postgres",
+  "version": null,
+  "inventoryMode": "supabase-rest-openapi",
+  "connectionTest": "REST API succeeded; Postgres direct connection failed (getaddrinfo ENOTFOUND db.pzidyucjmlivbwlbyckh.supabase.co)",
+  "tableCount": 14,
+  "viewCount": 0,
+  "functionCount": 0,
+  "schemas": [
+    {
+      "name": "public",
+      "tables": [
+        {
+          "name": "income_categories",
+          "tableType": "BASE TABLE",
+          "estimatedRows": "n/a",
+          "rlsEnabled": null,
+          "primaryKey": [],
+          "columns": [
+            {
+              "name": "id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "project_id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "name",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "color",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "created_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "data_source",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "seed_batch_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            }
+          ]
+        },
+        {
+          "name": "receipts",
+          "tableType": "BASE TABLE",
+          "estimatedRows": "n/a",
+          "rlsEnabled": null,
+          "primaryKey": [],
+          "columns": [
+            {
+              "name": "id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "project_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "title",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "amount",
+              "dataType": "numeric",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "date",
+              "dataType": "date",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "vendor",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "category",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "status",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "file_url",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "notes",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "uploaded_by",
+              "dataType": "uuid",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "created_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "data_source",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "seed_batch_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            }
+          ]
+        },
+        {
+          "name": "project_members",
+          "tableType": "BASE TABLE",
+          "estimatedRows": "n/a",
+          "rlsEnabled": null,
+          "primaryKey": [],
+          "columns": [
+            {
+              "name": "id",
+              "dataType": "uuid",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "project_id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "user_id",
+              "dataType": "uuid",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "role",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "department",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "joined_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "data_source",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "seed_batch_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            }
+          ]
+        },
+        {
+          "name": "expense_categories",
+          "tableType": "BASE TABLE",
+          "estimatedRows": "n/a",
+          "rlsEnabled": null,
+          "primaryKey": [],
+          "columns": [
+            {
+              "name": "id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "project_id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "name",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "budget",
+              "dataType": "numeric",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "spent",
+              "dataType": "numeric",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "color",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "created_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "data_source",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "seed_batch_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            }
+          ]
+        },
+        {
+          "name": "profiles",
+          "tableType": "BASE TABLE",
+          "estimatedRows": "n/a",
+          "rlsEnabled": null,
+          "primaryKey": [],
+          "columns": [
+            {
+              "name": "id",
+              "dataType": "uuid",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "email",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "name",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "avatar",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "role",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "department",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "phone",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "id_number",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "bank_account",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "bank_name",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "created_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "updated_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "data_source",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "seed_batch_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "level",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "is_active",
+              "dataType": "boolean",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "emergency_contact_name",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "emergency_contact_relationship",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "emergency_contact_phone",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "bank_branch",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "bank_account_holder",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "admin_level",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            }
+          ]
+        },
+        {
+          "name": "forms",
+          "tableType": "BASE TABLE",
+          "estimatedRows": "n/a",
+          "rlsEnabled": null,
+          "primaryKey": [],
+          "columns": [
+            {
+              "name": "id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "project_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "name",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "type",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "status",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "data",
+              "dataType": "jsonb",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "created_by",
+              "dataType": "uuid",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "created_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "updated_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "data_source",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "seed_batch_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            }
+          ]
+        },
+        {
+          "name": "activity_logs",
+          "tableType": "BASE TABLE",
+          "estimatedRows": "n/a",
+          "rlsEnabled": null,
+          "primaryKey": [],
+          "columns": [
+            {
+              "name": "id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "project_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "user_id",
+              "dataType": "uuid",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "action",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "details",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "created_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "data_source",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "seed_batch_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            }
+          ]
+        },
+        {
+          "name": "legal_documents",
+          "tableType": "BASE TABLE",
+          "estimatedRows": "n/a",
+          "rlsEnabled": null,
+          "primaryKey": [],
+          "columns": [
+            {
+              "name": "id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "project_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "title",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "type",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "file_url",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "uploaded_by",
+              "dataType": "uuid",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "created_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "data_source",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "seed_batch_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "status",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "signing_date",
+              "dataType": "date",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "expiry_date",
+              "dataType": "date",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "parties",
+              "dataType": "jsonb",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "amount",
+              "dataType": "numeric",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "currency",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "notes",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "version",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "effective_date",
+              "dataType": "date",
+              "isNullable": true,
+              "defaultValue": null
+            }
+          ]
+        },
+        {
+          "name": "income_records",
+          "tableType": "BASE TABLE",
+          "estimatedRows": "n/a",
+          "rlsEnabled": null,
+          "primaryKey": [],
+          "columns": [
+            {
+              "name": "id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "project_id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "category_id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "amount",
+              "dataType": "numeric",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "date",
+              "dataType": "date",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "description",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "source",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "created_by",
+              "dataType": "uuid",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "created_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "data_source",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "seed_batch_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            }
+          ]
+        },
+        {
+          "name": "expense_records",
+          "tableType": "BASE TABLE",
+          "estimatedRows": "n/a",
+          "rlsEnabled": null,
+          "primaryKey": [],
+          "columns": [
+            {
+              "name": "id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "project_id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "category_id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "amount",
+              "dataType": "numeric",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "date",
+              "dataType": "date",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "description",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "vendor",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "receipt_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "created_by",
+              "dataType": "uuid",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "created_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "data_source",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "seed_batch_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            }
+          ]
+        },
+        {
+          "name": "projects",
+          "tableType": "BASE TABLE",
+          "estimatedRows": "n/a",
+          "rlsEnabled": null,
+          "primaryKey": [],
+          "columns": [
+            {
+              "name": "id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "name",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "description",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "status",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "budget",
+              "dataType": "numeric",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "spent",
+              "dataType": "numeric",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "start_date",
+              "dataType": "date",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "end_date",
+              "dataType": "date",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "owner_id",
+              "dataType": "uuid",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "created_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "updated_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "data_source",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "seed_batch_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "base_currency",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "currency",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "type",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "project_manager_id",
+              "dataType": "uuid",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "closed_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "org_id",
+              "dataType": "uuid",
+              "isNullable": true,
+              "defaultValue": null
+            }
+          ]
+        },
+        {
+          "name": "organizations",
+          "tableType": "BASE TABLE",
+          "estimatedRows": "n/a",
+          "rlsEnabled": null,
+          "primaryKey": [],
+          "columns": [
+            {
+              "name": "id",
+              "dataType": "uuid",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "name",
+              "dataType": "character varying",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "tax_id",
+              "dataType": "character varying",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "address",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "phone",
+              "dataType": "character varying",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "email",
+              "dataType": "character varying",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "plan_type",
+              "dataType": "character varying",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "max_projects",
+              "dataType": "integer",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "max_members",
+              "dataType": "integer",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "max_storage_mb",
+              "dataType": "integer",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "is_active",
+              "dataType": "boolean",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "subscription_start_date",
+              "dataType": "date",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "subscription_end_date",
+              "dataType": "date",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "data_source",
+              "dataType": "character varying",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "seed_batch_id",
+              "dataType": "character varying",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "created_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "updated_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            }
+          ]
+        },
+        {
+          "name": "alerts",
+          "tableType": "BASE TABLE",
+          "estimatedRows": "n/a",
+          "rlsEnabled": null,
+          "primaryKey": [],
+          "columns": [
+            {
+              "name": "id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "project_id",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "type",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "severity",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "title",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "message",
+              "dataType": "text",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "is_read",
+              "dataType": "boolean",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "created_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "data_source",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "seed_batch_id",
+              "dataType": "text",
+              "isNullable": true,
+              "defaultValue": null
+            }
+          ]
+        },
+        {
+          "name": "org_members",
+          "tableType": "BASE TABLE",
+          "estimatedRows": "n/a",
+          "rlsEnabled": null,
+          "primaryKey": [],
+          "columns": [
+            {
+              "name": "id",
+              "dataType": "uuid",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "org_id",
+              "dataType": "uuid",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "user_id",
+              "dataType": "uuid",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "org_role",
+              "dataType": "character varying",
+              "isNullable": false,
+              "defaultValue": null
+            },
+            {
+              "name": "is_active",
+              "dataType": "boolean",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "joined_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "data_source",
+              "dataType": "character varying",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "seed_batch_id",
+              "dataType": "character varying",
+              "isNullable": true,
+              "defaultValue": null
+            },
+            {
+              "name": "created_at",
+              "dataType": "timestamp with time zone",
+              "isNullable": true,
+              "defaultValue": null
+            }
+          ]
+        }
+      ],
+      "views": [],
+      "functions": []
+    }
+  ]
+}
