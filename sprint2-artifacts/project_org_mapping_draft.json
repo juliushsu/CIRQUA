@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-04-28T00:00:00Z",
+  "source": "read-only Sprint 2A tenant review",
+  "notes": [
+    "Do not auto-apply any proposed_org_id values.",
+    "The proposed_org_id values below require human approval.",
+    "Inference is based on a single current organization row and the project owner's org membership.",
+    "There are no project_members rows and no child-table records to strengthen tenant inference."
+  ],
+  "projects": [
+    {
+      "project_id": "proj-1",
+      "name": "《夏日時光》長片製作",
+      "current_org_id": null,
+      "proposed_org_id": "53a14fc1-0c54-4cf2-bfc1-546fd12db86f",
+      "confidence": "medium",
+      "reason": "Project owner is an active owner in the only existing organization, but the project row has no persisted org_id and there are no child rows to independently confirm tenant assignment."
+    },
+    {
+      "project_id": "proj-2",
+      "name": "《城市印象》廣告片",
+      "current_org_id": null,
+      "proposed_org_id": "53a14fc1-0c54-4cf2-bfc1-546fd12db86f",
+      "confidence": "medium",
+      "reason": "Project owner is an active owner in the only existing organization, but the project row has no persisted org_id and there are no child rows to independently confirm tenant assignment."
+    },
+    {
+      "project_id": "proj-3",
+      "name": "《記憶拼圖》紀錄片",
+      "current_org_id": null,
+      "proposed_org_id": "53a14fc1-0c54-4cf2-bfc1-546fd12db86f",
+      "confidence": "medium",
+      "reason": "Project owner is an active owner in the only existing organization, but the project row has no persisted org_id and there are no child rows to independently confirm tenant assignment."
+    }
+  ]
+}
